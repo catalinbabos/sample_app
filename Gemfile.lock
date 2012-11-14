@@ -53,6 +53,7 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.1.5)
+    gravatar_image_tag (1.0.0.pre2)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -148,6 +149,7 @@ DEPENDENCIES
   annotate (= 2.4.0)
   capybara
   coffee-rails (~> 3.2.1)
+  gravatar_image_tag (= 1.0.0.pre2)
   jquery-rails
   rails (= 3.2.8)
   rb-readline
