@@ -138,3 +138,14 @@ td.sidebar {
   border: 1px solid #999;
   margin-bottom: -15px;
 }
+
+div.field, div.actions {
+  margin-bottom: 5px;
+}
+
+div.field input {
+  padding:3px;
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
+  border-radius:         5px;
+}
