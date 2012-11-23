@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer         not null, primary key
+#  name               :string(255)
+#  email              :string(255)
+#  created_at         :datetime        not null
+#  updated_at         :datetime        not null
+#  encrypted_password :string(255)
+#  salt               :string(255)
+#
+
 require 'digest'
 
 class User < ActiveRecord::Base
@@ -23,8 +36,12 @@ class User < ActiveRecord::Base
 
   def self.authenticate(email, submitted_password)
     user = find_by_email(email)
-    return nil if user.blank?
-    return user if user.has_password?(submitted_password)
+    (user && user.has_password == submitted_password) ? user : nil 
+  end
+
+  def self.authenticate_with_salt(id, cookie_salt)
+    user = find_by_id(id)
+    (user && user.salt == cookie_salt) ? user : nil
   end
 
   private
