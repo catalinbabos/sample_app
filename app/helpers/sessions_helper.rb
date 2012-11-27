@@ -40,6 +40,10 @@ module SessionsHelper
     	redirect_to(session[:return_to] || default)
     end
 
+    def isAdmin?
+    	current_user.admin?
+    end
+
 	private
 
 	  def user_from_remember_token
