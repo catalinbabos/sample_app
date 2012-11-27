@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:edit, :update]
+  before_filter :authenticate, :only => [:ndex, :edit, :update]
   before_filter :correct_user, :only => [:edit, :update]
+
+  def index
+    @title = "All users"
+    @users = User.all
+  end
 
   def show
   	@user = User.find(params[:id])
@@ -49,7 +54,8 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      flash[:notice] = "Access Denied."
-      redirect_to(current_user) unless current_user?(@user)
+      unless current_user?(@user)
+        redirect_to current_user, :flash => { :notice => "Access Denied." }
+      end 
     end
 end
